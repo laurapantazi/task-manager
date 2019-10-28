@@ -12,15 +12,15 @@ const tasks = (state = [], action) => {
           duration: action.duration,
           priority: action.priority,
           points: action.points,
-          status: action.status
+          status: 'TODO'
         }
       ]
     case START_TASK:
       return state.map(task => 
-        (task.id === action.id) ? {...task, status: 'IN_PROGRESS'} : task)
+        (task.id === action.id) ? {...task, status: 'IN PROGRESS'} : task)
     case FINISH_TASK:
-        return state.map(task => 
-          (task.id === action.id) ? {...task, status: 'COMPLETED'} : task)
+      return state.map(task => 
+        (task.id === action.id) ? {...task, status: 'COMPLETED'} : task)
     default:
       return state
   }

@@ -14,21 +14,20 @@ class TaskForm extends Component {
       points: '',
       status: false,
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
-  handleInputChange (event) {
+  handleInputChange = (event) => {
     const {value, name} = event.target
     this.setState({
       [name]: value
     })
   }
 
-  handleSubmit (event) {
+  handleSubmit = (event) => {
     event.preventDefault()
     let {description, category, duration, priority, points, status} = this.state
     this.props.addTask(description, category, duration, priority, points, status)
+    this.setState({ description: '', category: '', duration: '', priority: '', points: ''})
   }
 
   render () {
@@ -48,7 +47,7 @@ class TaskForm extends Component {
           <Form.Row>
             <Form.Group as={Col} controlId="formGridDuration">
               <Form.Label>Duration</Form.Label>
-              <Form.Control type="text" name="duration" value={this.state.duration} placeholder="Type duration" onChange={this.handleInputChange} />
+              <Form.Control type="number" name="duration" value={this.state.duration} placeholder="Type duration" onChange={this.handleInputChange} />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridPriority">
@@ -63,7 +62,7 @@ class TaskForm extends Component {
 
             <Form.Group as={Col} controlId="formGridPoints">
               <Form.Label>Points</Form.Label>
-              <Form.Control type="text" name="points" value={this.state.points} placeholder="Type points" onChange={this.handleInputChange}/>
+              <Form.Control type="number" name="points" value={this.state.points} placeholder="Type points" onChange={this.handleInputChange}/>
             </Form.Group>
           </Form.Row>
           <Button variant="primary" type="submit">
