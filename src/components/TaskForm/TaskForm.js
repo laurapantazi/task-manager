@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import { Form, Button, Col } from 'react-bootstrap'
+import { Form, Button, Col, InputGroup } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { addTask } from './store/actions'
+import { addTask } from '../../store/actions'
 
 class TaskForm extends Component {
   constructor (props) {
@@ -47,7 +47,12 @@ class TaskForm extends Component {
           <Form.Row>
             <Form.Group as={Col} controlId="formGridDuration">
               <Form.Label>Duration</Form.Label>
+              <InputGroup>
               <Form.Control type="number" name="duration" value={this.state.duration} placeholder="Type duration" onChange={this.handleInputChange} />
+              <InputGroup.Append>
+                <InputGroup.Text id="inputGroupPrepend">minutes</InputGroup.Text>
+              </InputGroup.Append>
+              </InputGroup>
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridPriority">
@@ -62,7 +67,7 @@ class TaskForm extends Component {
 
             <Form.Group as={Col} controlId="formGridPoints">
               <Form.Label>Points</Form.Label>
-              <Form.Control type="number" name="points" value={this.state.points} placeholder="Type points" onChange={this.handleInputChange}/>
+              <Form.Control type="number" step="5" name="points" value={this.state.points} placeholder="Type points" onChange={this.handleInputChange}/>
             </Form.Group>
           </Form.Row>
           <Button variant="primary" type="submit">
