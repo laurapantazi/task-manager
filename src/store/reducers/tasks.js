@@ -1,4 +1,4 @@
-import { ADD_TASK, START_TASK, FINISH_TASK } from '../constants/ActionTypes'
+import { ADD_TASK, START_TASK, FINISH_TASK, DELETE_TASK } from '../constants/ActionTypes'
 
 const tasks = (state = [], action) => {
   switch (action.type) {
@@ -21,6 +21,8 @@ const tasks = (state = [], action) => {
     case FINISH_TASK:
       return state.map(task => 
         (task.id === action.id) ? {...task, status: 'COMPLETED'} : task)
+    case DELETE_TASK:
+      return state.filter(task => task.id !== action.id)
     default:
       return state
   }

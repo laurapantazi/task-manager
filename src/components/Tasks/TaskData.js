@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import TaskTable from './TaskTable'
-import { startTask, finishTask, setFilterTask } from '../../store/actions'
+import { startTask, finishTask, deleteTask, setFilterTask } from '../../store/actions'
 import { FilterTasks } from '../../store/constants/ActionTypes'
 
 function selectFilteredTasks (tasks, filter) {
@@ -24,4 +24,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { startTask, finishTask, setFilterTask })(TaskTable)
+export default connect(mapStateToProps, { startTask, finishTask, deleteTask, setFilterTask })(TaskTable)

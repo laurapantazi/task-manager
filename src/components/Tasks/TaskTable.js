@@ -1,7 +1,8 @@
 import React from 'react'
 import { Button, Table } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 
-const TaskTable = function ({tasks, startTask, finishTask}) {
+const TaskTable = function ({tasks, startTask, finishTask, deleteTask}) {
   let item = tasks.map((task) => {
     return(
       <tr key={task.id}>
@@ -15,6 +16,7 @@ const TaskTable = function ({tasks, startTask, finishTask}) {
         <td>
           <Button variant="outline-primary" onClick={() => startTask(task.id)}>In Progress</Button>
           <Button variant="outline-success" onClick={() => finishTask(task.id)}>Done</Button>
+          <Button variant="outline-danger" onClick={() => deleteTask(task.id)}>Delete</Button>
         </td>
       </tr>
      )
@@ -46,5 +48,10 @@ const TaskTable = function ({tasks, startTask, finishTask}) {
     )
   }
 }
-
+TaskTable.propTypes = {
+  tasks: PropTypes.array.isRequired,
+  startTask: PropTypes.func.isRequired,
+  finishTask: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired
+}
 export default TaskTable
