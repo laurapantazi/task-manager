@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import { Nav } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { FilterTasks } from '../../store/constants/ActionTypes'
-import { setFilterTask } from '../../store/actions'
+import { FilterTasks } from 'store/constants/ActionTypes'
+import { setFilterTask } from 'store/actions'
 
 class TaskFilter extends Component {
   render() {

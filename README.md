@@ -4,6 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Features
 * [x] React
 * [x] Redux
+* [x] React Router
 * [x] React-Bootstrap
 
 ## Getting Started

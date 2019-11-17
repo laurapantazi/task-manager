@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
-import TaskTable from './TaskTable'
-import { startTask, finishTask, deleteTask, setFilterTask } from '../../store/actions'
-import { selectFilteredTasks } from '../../store/selectors'
+import TaskTable from 'components/Tasks/TaskTable'
+import { startTask, finishTask, deleteTask, setFilterTask } from 'store/actions'
+import { selectFilteredTasks } from 'store/selectors'
 
 function mapStateToProps(state) {
   return {

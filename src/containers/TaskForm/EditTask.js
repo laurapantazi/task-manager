@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { editTask } from '../../store/actions'
-import {TaskFormComponent} from './TaskFormComponent'
+import { editTask } from 'store/actions'
+import {TaskForm} from 'components/TaskForm/TaskForm'
 import { Redirect } from 'react-router-dom'
 
-class TaskFormEditContainer extends Component {
+class EditTask extends Component {
   constructor (props) {
     super(props)
     this.state = {id: this.props.match.params.id}
@@ -13,7 +13,7 @@ class TaskFormEditContainer extends Component {
     let taskExists = this.props.tasks.find(task => task.id == this.state.id)
     if (taskExists) {
       return (
-        <TaskFormComponent edit task={taskExists} editTask={this.props.editTask} />
+        <TaskForm edit task={taskExists} editTask={this.props.editTask} />
       )
     } else {
       return (<Redirect to="/404" />)
@@ -24,4 +24,4 @@ class TaskFormEditContainer extends Component {
 function mapStateToProps (state) {
   return {tasks: state.tasks}
 }
-export default connect(mapStateToProps, { editTask })(TaskFormEditContainer)
+export default connect(mapStateToProps, { editTask })(EditTask)

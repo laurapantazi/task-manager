@@ -2,11 +2,11 @@ import React, {Component} from 'react'
 import {Container, Navbar, Nav} from 'react-bootstrap'
 import { Switch, Route, BrowserRouter as Router, NavLink, Redirect } from 'react-router-dom'
 import './App.css'
-import TaskFormAddContainer from './components/TaskForm/TaskFormAddContainer'
-import TaskFormEditContainer from './components/TaskForm/TaskFormEditContainer'
-import Tasks from './components/Tasks/Tasks'
-import About from './components/About/About'
-import NotFound from './components/NotFound/NotFound'
+import AddTask from 'containers/TaskForm/AddTask'
+import EditTask from 'containers/TaskForm/EditTask'
+import Tasks from 'containers/Tasks/Tasks'
+import About from 'containers/About/About'
+import NotFound from 'containers/NotFound/NotFound'
 
 export default class App extends Component {
   render () {
@@ -27,8 +27,8 @@ export default class App extends Component {
         <Container className="App">
           <Switch>
             <Route exact path="/" component={About} />
-            <Route path="/create" component={TaskFormAddContainer} />
-            <Route path="/tasks/:id" component={TaskFormEditContainer} />
+            <Route path="/create" component={AddTask} />
+            <Route path="/tasks/:id" component={EditTask} />
             <Route exact path="/tasks" component={Tasks} />
             <Route name="404" path="/404" component={NotFound} />
             <Redirect to="/404" />

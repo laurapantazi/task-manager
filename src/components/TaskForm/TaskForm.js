@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Form, Button, Col, InputGroup, FormControl, ListGroup } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 
-export class TaskFormComponent extends Component {
+export class TaskForm extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -134,7 +134,7 @@ export class TaskFormComponent extends Component {
   }
 }
 
-TaskFormComponent.propTypes = {
+TaskForm.propTypes = {
   edit: PropTypes.bool,
   add: PropTypes.bool,
   task: PropTypes.object,
