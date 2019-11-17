@@ -3,7 +3,8 @@ import {
   START_TASK,
   FINISH_TASK,
   SET_FILTER,
-  DELETE_TASK
+  DELETE_TASK,
+  EDIT_TASK
 } from '../constants/ActionTypes'
 
 let nextTaskId = 0
@@ -35,4 +36,14 @@ export const setFilterTask = filter =>  ({
 export const deleteTask = id =>  ({
   type: DELETE_TASK,
   id
+})
+
+export const editTask = (id, description, category, duration, priority, points) => ({
+  type: EDIT_TASK,
+  id,
+  description,
+  category,
+  duration,
+  priority,
+  points
 })

@@ -1,21 +1,34 @@
 import React, {Component} from 'react'
-import { Form, Button, Col, InputGroup } from 'react-bootstrap'
-import { connect } from 'react-redux'
-import { addTask } from '../../store/actions'
+import { Form, Button, Col, InputGroup, FormControl, ListGroup } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 
-class TaskForm extends Component {
+export class TaskFormComponent extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      id: null,
       description: '',
       category: '',
       duration: '',
       priority: '',
       points: '',
       status: false,
+      errors: []
     }
   }
-
+  componentDidMount () {
+    if (this.props.editTask) {
+      this.setState({
+        id: this.props.task.id,
+        description: this.props.task.description,
+        category: this.props.task.category,
+        duration: this.props.task.duration,
+        priority: this.props.task.priority,
+        points: this.props.task.points,
+        status: this.props.task.status,
+      })
+    }
+  }
   handleInputChange = (event) => {
     const {value, name} = event.target
     this.setState({
@@ -23,20 +36,62 @@ class TaskForm extends Component {
     })
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault()
-    let {description, category, duration, priority, points, status} = this.state
-    this.props.addTask(description, category, duration, priority, points, status)
-    this.setState({ description: '', category: '', duration: '', priority: '', points: ''})
+  formHasErrors = () => {
+    this.setState({errors: []})
+    let {description, category} = this.state
+    let errors = []
+    if (!description) {
+      errors.push('Task description is required')
+    }
+    if (!category) {
+      errors.push('Task category is required')
+    }
+    if (errors.length) {
+      this.setState(previousState => ({
+        errors: [...previousState.errors, ...errors]
+      }))
+      return true
+    } else {
+      return false
+    }
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault()
+    let {id, description, category, duration, priority, points, status} = this.state
+    if (!this.formHasErrors()) {
+      if (this.props.editTask) {
+        this.props.onSave(id, description, category, duration, priority, points, status)
+      } else {
+        this.props.onSave(description, category, duration, priority, points, status)
+        this.setState({ description: '', category: '', duration: '', priority: '', points: ''})
+      }
+    }
+  }
+
+  showErrors () {
+    return this.state.errors.map((error, index) => {
+      return (
+        <ListGroup.Item as="li" variant="danger" key={index}>
+          {error}
+        </ListGroup.Item>
+      )
+    })
+  }
   render () {
     return (
       <div className="container taskList">
+        <ListGroup as="ul">
+          {this.showErrors()}
+        </ListGroup>
         <Form onSubmit={this.handleSubmit}>
+        {this.state.errors.description}
           <Form.Group controlId="formPlaintextDescription">
             <Form.Label>Description</Form.Label>
             <Form.Control type="text" name="description" value={this.state.description} placeholder="Type description" onChange={this.handleInputChange} />
+            <FormControl.Feedback>
+              {this.state.errors.description}
+            </FormControl.Feedback>
           </Form.Group>
 
           <Form.Group controlId="formPlaintextCategory">
@@ -79,4 +134,10 @@ class TaskForm extends Component {
   }
 }
 
-export default connect(null, { addTask })(TaskForm)
+TaskFormComponent.propTypes = {
+  edit: PropTypes.bool,
+  add: PropTypes.bool,
+  task: PropTypes.object,
+  editTask: PropTypes.func,
+  addTask: PropTypes.func 
+}
