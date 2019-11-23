@@ -17,7 +17,7 @@ export class TaskForm extends Component {
     }
   }
   componentDidMount () {
-    if (this.props.editTask) {
+    if (this.props.edit) {
       this.setState({
         id: this.props.task.id,
         description: this.props.task.description,
@@ -60,10 +60,10 @@ export class TaskForm extends Component {
     event.preventDefault()
     let {id, description, category, duration, priority, points, status} = this.state
     if (!this.formHasErrors()) {
-      if (this.props.editTask) {
-        this.props.onSave(id, description, category, duration, priority, points, status)
+      if (this.props.edit) {
+        this.props.editTask(id, description, category, duration, priority, points, status)
       } else {
-        this.props.onSave(description, category, duration, priority, points, status)
+        this.props.addTask(description, category, duration, priority, points, status)
         this.setState({ description: '', category: '', duration: '', priority: '', points: ''})
       }
     }
@@ -125,8 +125,8 @@ export class TaskForm extends Component {
               <Form.Control type="number" step="5" name="points" value={this.state.points} placeholder="Type points" onChange={this.handleInputChange}/>
             </Form.Group>
           </Form.Row>
-          <Button variant="primary" type="submit">
-            Add Task
+          <Button variant="primary" type="submit" value="ok">
+          {(this.props.add && 'Create') || (this.props.edit && 'Save Changes')}
           </Button>
         </Form>
       </div>
