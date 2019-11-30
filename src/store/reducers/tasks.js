@@ -32,7 +32,7 @@ const tasks = (state = [], action) => {
           duration: action.duration,
           priority: action.priority || 'Low',
           points: action.points,
-          status: 'TODO'
+          status: action.status
         } : task)
     default:
       return state
