@@ -7,6 +7,7 @@ import EditTask from 'containers/TaskForm/EditTask'
 import Tasks from 'containers/Tasks/Tasks'
 import About from 'containers/About/About'
 import NotFound from 'containers/NotFound/NotFound'
+import UploadTask from 'containers/UploadTask/UploadTask'
 
 export default class App extends Component {
   render () {
@@ -20,6 +21,7 @@ export default class App extends Component {
               <Nav.Link as={NavLink} to="/">About</Nav.Link>
               <Nav.Link as={NavLink} to="/create">Create Task</Nav.Link>
               <Nav.Link as={NavLink} to="/tasks">Tasks</Nav.Link>
+              <Nav.Link as={NavLink} to="/upload">Upload Task</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -30,6 +32,7 @@ export default class App extends Component {
             <Route path="/create" component={AddTask} />
             <Route path="/tasks/:id" component={EditTask} />
             <Route exact path="/tasks" component={Tasks} />
+            <Route exact path="/upload" component={UploadTask} />
             <Route name="404" path="/404" component={NotFound} />
             <Redirect to="/404" />
           </Switch>
