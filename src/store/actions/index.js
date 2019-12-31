@@ -4,8 +4,11 @@ import {
   FINISH_TASK,
   SET_FILTER,
   DELETE_TASK,
-  EDIT_TASK
+  EDIT_TASK,
+  UPLOAD_TASK,
+  UploadTaskStatus
 } from '../constants/ActionTypes'
+import axios from 'axios'
 
 let nextTaskId = 0
 export const addTask = (description, category, duration, priority, points) => ({
@@ -38,6 +41,11 @@ export const deleteTask = id =>  ({
   id
 })
 
+export const uploadTaskStatus = status => ({
+  type: UPLOAD_TASK,
+  status
+})
+
 export const editTask = (id, description, category, duration, priority, points) => ({
   type: EDIT_TASK,
   id,
@@ -47,3 +55,24 @@ export const editTask = (id, description, category, duration, priority, points) 
   priority,
   points
 })
+
+export const uploadTask = numberOfTasks => {
+  return dispatch => {
+    axios.get(`https://my.api.mockaroo.com/tasks/${numberOfTasks}.json?key=9c0bb4c0`)
+      .then(res => {
+        dispatch(uploadTaskStatus(UploadTaskStatus.SUCCESSFUL))
+        if (numberOfTasks > 1) {
+          for (let i = 0; i < res.data.length; i++) {
+            const {description, category, duration, priority, points} = res.data[i]
+            dispatch(addTask(description, category, duration, priority, points))
+          }
+        } else {
+          const {description, category, duration, priority, points} = res.data
+          dispatch(addTask(description, category, duration, priority, points))
+        }
+      })
+      .catch(err => {
+        dispatch(uploadTaskStatus(UploadTaskStatus.FAILED))        
+      })
+  }
+}
