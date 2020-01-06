@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskForm render correctly 1`] = `
+<div
+  className="container taskList"
+>
+  <ul
+    className="list-group"
+    onKeyDown={[Function]}
+  />
+  <form
+    className=""
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        className="form-label"
+        htmlFor="formPlaintextDescription"
+      >
+        Description
+      </label>
+      <input
+        className="form-control"
+        id="formPlaintextDescription"
+        name="description"
+        onChange={[Function]}
+        placeholder="Type description"
+        type="text"
+        value=""
+      />
+      <div
+        className="valid-feedback"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        className="form-label"
+        htmlFor="formPlaintextCategory"
+      >
+        Category
+      </label>
+      <input
+        className="form-control"
+        id="formPlaintextCategory"
+        name="category"
+        onChange={[Function]}
+        placeholder="Type category"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form-row"
+    >
+      <div
+        className="form-group col"
+      >
+        <label
+          className="form-label"
+          htmlFor="formGridDuration"
+        >
+          Duration
+        </label>
+        <div
+          className="input-group"
+        >
+          <input
+            className="form-control"
+            id="formGridDuration"
+            name="duration"
+            onChange={[Function]}
+            placeholder="Type duration"
+            type="number"
+            value=""
+          />
+          <div
+            className="input-group-append"
+          >
+            <span
+              className="input-group-text"
+              id="inputGroupPrepend"
+            >
+              minutes
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="form-group col"
+      >
+        <label
+          className="form-label"
+          htmlFor="formGridPriority"
+        >
+          Priority
+        </label>
+        <select
+          className="form-control"
+          id="formGridPriority"
+          name="priority"
+          onChange={[Function]}
+          value=""
+        >
+          <option>
+            Choose Priority
+          </option>
+          <option>
+            High
+          </option>
+          <option>
+            Medium
+          </option>
+          <option>
+            Low
+          </option>
+        </select>
+      </div>
+      <div
+        className="form-group col"
+      >
+        <label
+          className="form-label"
+          htmlFor="formGridPoints"
+        >
+          Points
+        </label>
+        <input
+          className="form-control"
+          id="formGridPoints"
+          name="points"
+          onChange={[Function]}
+          placeholder="Type points"
+          step="5"
+          type="number"
+          value=""
+        />
+      </div>
+    </div>
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      type="submit"
+      value="ok"
+    >
+      Create
+    </button>
+  </form>
+</div>
+`;
+
+exports[`TaskForm render correctly 2`] = `
+<div
+  className="container taskList"
+>
+  <ul
+    className="list-group"
+    onKeyDown={[Function]}
+  />
+  <form
+    className=""
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        className="form-label"
+        htmlFor="formPlaintextDescription"
+      >
+        Description
+      </label>
+      <input
+        className="form-control"
+        id="formPlaintextDescription"
+        name="description"
+        onChange={[Function]}
+        placeholder="Type description"
+        type="text"
+      />
+      <div
+        className="valid-feedback"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        className="form-label"
+        htmlFor="formPlaintextCategory"
+      >
+        Category
+      </label>
+      <input
+        className="form-control"
+        id="formPlaintextCategory"
+        name="category"
+        onChange={[Function]}
+        placeholder="Type category"
+        type="text"
+      />
+    </div>
+    <div
+      className="form-row"
+    >
+      <div
+        className="form-group col"
+      >
+        <label
+          className="form-label"
+          htmlFor="formGridDuration"
+        >
+          Duration
+        </label>
+        <div
+          className="input-group"
+        >
+          <input
+            className="form-control"
+            id="formGridDuration"
+            name="duration"
+            onChange={[Function]}
+            placeholder="Type duration"
+            type="number"
+          />
+          <div
+            className="input-group-append"
+          >
+            <span
+              className="input-group-text"
+              id="inputGroupPrepend"
+            >
+              minutes
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="form-group col"
+      >
+        <label
+          className="form-label"
+          htmlFor="formGridPriority"
+        >
+          Priority
+        </label>
+        <select
+          className="form-control"
+          id="formGridPriority"
+          name="priority"
+          onChange={[Function]}
+        >
+          <option>
+            Choose Priority
+          </option>
+          <option>
+            High
+          </option>
+          <option>
+            Medium
+          </option>
+          <option>
+            Low
+          </option>
+        </select>
+      </div>
+      <div
+        className="form-group col"
+      >
+        <label
+          className="form-label"
+          htmlFor="formGridPoints"
+        >
+          Points
+        </label>
+        <input
+          className="form-control"
+          id="formGridPoints"
+          name="points"
+          onChange={[Function]}
+          placeholder="Type points"
+          step="5"
+          type="number"
+        />
+      </div>
+    </div>
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      type="submit"
+      value="ok"
+    >
+      Save Changes
+    </button>
+  </form>
+</div>
+`;
