@@ -1,3 +1,4 @@
+/*eslint eqeqeq: "off"*/
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { editTask } from 'store/actions'

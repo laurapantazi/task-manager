@@ -1,3 +1,4 @@
+/*eslint eqeqeq: "off"*/
 import { FilterTasks } from '../../store/constants/ActionTypes'
 
 export const getTaskById = (tasks, id) => {
