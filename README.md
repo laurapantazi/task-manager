@@ -1,4 +1,4 @@
-# React Project (In Progress)
+# React Project
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Description
@@ -25,14 +25,17 @@ A fake API was created with Mockaroo.com in order to generate fake tasks and imp
 ## Getting Started
 Clone or download repository
 
+### Install dependencies
+`npm install` or `yarn install`
+
 ### Start server
-`npm start`
+`npm start` or `yarn start`
 
 ### Start tests
-`npm test`
+`npm test` or `yarn test`
 
 ### Build
-`npm run build`
+`npm run build` or `yarn run build`
 
 ### Eject
-`npm run eject`
+`npm run eject` or `yarn run eject`
