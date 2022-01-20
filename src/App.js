@@ -1,19 +1,28 @@
-import React, {Component} from 'react'
-import {Container, Navbar, Nav} from 'react-bootstrap'
+import React, {Component, Suspense, lazy} from 'react'
+import {Container, Row, Col, Navbar, Nav, Spinner} from 'react-bootstrap'
 import { Switch, Route, BrowserRouter as Router, NavLink, Redirect } from 'react-router-dom'
 import './App.css'
-import AddTask from 'containers/TaskForm/AddTask'
-import EditTask from 'containers/TaskForm/EditTask'
-import Tasks from 'containers/Tasks/Tasks'
-import About from 'containers/About/About'
-import NotFound from 'containers/NotFound/NotFound'
-import UploadTask from 'containers/UploadTask/UploadTask'
+const AddTask = lazy(() => import('./containers/TaskForm/AddTask'))
+const EditTask = lazy(() => import('./containers/TaskForm/EditTask'))
+const Tasks = lazy(() => import('./containers/Tasks/Tasks'))
+const About = lazy(() => import('./containers/About/About'))
+const NotFound = lazy(() => import('./containers/NotFound/NotFound'))
+const UploadTask = lazy(() => import('./containers/UploadTask/UploadTask'))
 
 export default class App extends Component {
   render () {
     return (
+      <Suspense fallback={
+        <Container fluid style={{maxWidth: '100vw', height: '100vh'}}>
+          <Row style={{height: '100%',justifyContent: 'center', alignItems: 'center'}}>
+            <Col style={{textAlign: 'center'}}>
+            <Spinner animation="border" role="status">
+            </Spinner>
+          </Col>
+        </Row>
+      </Container>}>
       <Router>
-        <Navbar bg="light" expand="lg">
+        <Navbar expand="lg" bg="dark" variant="dark" style={{background: '#618B45', color: '#fff', marginBottom: '40px'}}>
           <Navbar.Brand>Task</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -38,6 +47,7 @@ export default class App extends Component {
           </Switch>
         </Container>
       </Router>
+      </Suspense>
     )
   }
 }
