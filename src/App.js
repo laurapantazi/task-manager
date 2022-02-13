@@ -23,7 +23,7 @@ export default class App extends Component {
       </Container>}>
       <Router>
         <Navbar expand="lg" bg="dark" variant="dark" style={{background: '#618B45', color: '#fff', marginBottom: '40px'}}>
-          <Navbar.Brand>Task</Navbar.Brand>
+          <Navbar.Brand as={NavLink} to="/">Task</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
