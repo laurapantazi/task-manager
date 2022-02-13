@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import AddTask from './AddTask'
-import configureStore from 'redux-mock-store'
+import mockStore from '../../Utils/mockStore'
 import { FilterTasks, UploadTaskStatus, ADD_TASK } from '../../store/constants/ActionTypes'
 import { addTask } from '../../store/actions'
 
@@ -11,7 +11,6 @@ describe('AddTask renders correctly', () => {
     filterTasks: FilterTasks.SHOW_ALL,
     uploadTaskStatus: UploadTaskStatus.IN_PROGRESS
   }
-  const mockStore = configureStore()
   let store, wrapper
   beforeEach(() => {
     store = mockStore(initialState)
